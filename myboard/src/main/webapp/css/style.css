@@ -1,0 +1,29 @@
+@charset "UTF-8";
+caption {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+    color: #333;
+}
+body {
+	font-size:9pt;
+}
+button{
+	font-size:9pt;
+}
+table {
+	width:600px;
+	border-collapse:collapse;
+}
+th, td {
+	border:1px solid #cccccc;
+	padding:3px;
+}
+.input1 {
+	width:98%;
+}
+.textarea {
+	width:98%;
+	height:70px;
+}
