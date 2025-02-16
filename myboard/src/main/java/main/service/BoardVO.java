@@ -9,6 +9,37 @@ public class BoardVO {
 	private String content;
 	private int hits;
 	private String rdate;
+	
+	private int startIndex;
+	private int endIndex;
+	
+	private String searchType;
+	private String searchText;
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String getSearchText() {
+		return searchText;
+	}
+	public void setSearchText(String searchText) {
+		this.searchText = searchText;
+	}
+	public int getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+	public int getEndIndex() {
+		return endIndex;
+	}
+	public void setEndIndex(int endIndex) {
+		this.endIndex = endIndex;
+	}
 	public int getUnq() {
 		return unq;
 	}
