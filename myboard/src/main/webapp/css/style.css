@@ -9,6 +9,9 @@ caption {
 body {
 	font-size:9pt;
 }
+a {
+	text-decoration:none;
+}
 button{
 	font-size:9pt;
 }
@@ -20,10 +23,28 @@ th, td {
 	border:1px solid #cccccc;
 	padding:3px;
 }
+div {
+	width:600px;
+}
 .input1 {
 	width:98%;
+	
 }
+
 .textarea {
 	width:98%;
 	height:70px;
+}
+.div1 {
+	text-align:center;
+	font-size:15pt;
+	margin-bottom:10px;
+}
+.div2 {
+	text-align:left;
+	font-size:9pt;
+}
+.page {
+	margin-top:5px;
+	text-align:center;
 }
