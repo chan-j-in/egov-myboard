@@ -1,10 +1,13 @@
 package main.web;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.service.BoardService;
@@ -31,9 +34,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardList.do")
-	public String selectNBoardList(BoardVO vo, ModelMap model) throws Exception {
+	public String selectNBoardList(@RequestParam(value="page", defaultValue="1")int page, BoardVO vo, ModelMap model) throws Exception {
 		
-		model.addAttribute("resultList", boardService.selectNBoardList(vo));
+		Map<String, Object> data = boardService.selectNBoardList(page, vo);
+		
+		model.addAllAttributes(data);
 		return "board/boardList";
 	}
 }
