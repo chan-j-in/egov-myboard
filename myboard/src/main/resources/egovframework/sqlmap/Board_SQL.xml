@@ -18,7 +18,7 @@
 	</insert>
 	
 	<select id="boardDAO.selectNBoardList" resultClass="egovMap">
-		<![CDATA[
+		
 			select b.*from(
 				select rownum rn, a.* from(
 					select
@@ -29,9 +29,13 @@
 						to_char(rdate,'yyyy-mm-dd') rdate
 					from
 						nboard
+					<isNotNull property="searchText">
+						where
+							$searchType$ like '%$searchText$%'
+					</isNotNull>
 					order by unq desc) a) b
-			where rn>=#startIndex# and rn<#endIndex#
-		]]>
+			where rn>=#startIndex# and rn <![CDATA[<=]]>#endIndex#
+		
 	</select>
 	
 	<select id="boardDAO.selectNBoardTotal" resultClass="java.lang.Integer">
@@ -39,5 +43,9 @@
 			count(*) total
 		from
 			nboard
+		<isNotNull property="searchText">
+			where
+				$searchType$ like '%$searchText$%'
+		</isNotNull>
 	</select>
 </sqlMap>
