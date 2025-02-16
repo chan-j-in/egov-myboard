@@ -23,7 +23,7 @@
 <div style="width:600px;margin-top:5px;margin-bottom:5px;text-align:right;">
 	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
 </div>
-<div class="div2">전체 게시글 수 : ${total}</div>
+<div class="div2">검색된 게시글 수 : ${total}</div>
 <table>
 
 	<tr>
@@ -53,6 +53,18 @@
 		<a href="boardList.do?page=${i}">${i}</a>
 	</c:forEach>
 	
+</div>
+
+<div class="div2" style="text-align:center;">
+<form name="searchFrm" method="post" action="boardList.do">
+	<select name="searchType" id="searchType">
+		<option value="title">제목</option>
+		<option value="name">작성자</option>
+		<option value="content">내용</option>
+	</select>
+	<input type="text" name="searchText" id="searchText">
+	<button type="submit">검색</button>
+</form>
 </div>
 
 </body>
