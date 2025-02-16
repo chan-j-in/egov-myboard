@@ -20,8 +20,12 @@
 </head>
 <body>
 <div class="div1">게시글 목록</div>
+<div style="width:600px;margin-top:5px;margin-bottom:5px;text-align:right;">
+	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
+</div>
 <div class="div2">전체 게시글 수 : ${total}</div>
 <table>
+
 	<tr>
 		<th width="15%">번호</th>
 		<th width="40%">제목</th>
@@ -43,8 +47,13 @@
 	</c:forEach>
 </table>
 
-<div style="width:600px;margin-top:5px;margin-bottom:5px;text-align:right;">
-	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
+<div class="page">
+
+	<c:forEach var="i" begin="1" end="${totalPage}">
+		<a href="boardList.do?page=${i}">${i}</a>
+	</c:forEach>
+	
 </div>
+
 </body>
 </html>
