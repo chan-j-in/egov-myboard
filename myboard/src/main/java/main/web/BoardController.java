@@ -51,9 +51,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/boardModifyWrite.do")
-	public String boardModifyWrite(BoardVO vo, ModelMap model) throws Exception {
+	public String boardModifyWrite(int unq, ModelMap model) throws Exception {
 		
-		BoardVO boardVO = boardService.selectNBoardDetail(vo.getUnq());
+		BoardVO boardVO = boardService.selectNBoardDetail(unq);
 		model.addAttribute("boardVO", boardVO);
 		
 		System.out.println("title = " + boardVO.getTitle());
@@ -66,5 +66,21 @@ public class BoardController {
 	public String updateNBoard(BoardVO vo) throws Exception {
 		
 		return boardService.updateNBoard(vo)+"";
+	}
+	
+	@RequestMapping("/passWrite.do")
+	public String passWrite(int unq, ModelMap model) {
+		
+		model.addAttribute("unq", unq);
+		return "board/passWrite";
+	}
+	
+	@RequestMapping("/boardDelete.do")
+	@ResponseBody
+	public String deleteNBoard(BoardVO vo) throws Exception {
+		
+		int result = boardService.deleteNBoard(vo);
+		System.out.println("result : " + result);
+		return result+"";
 	}
 }
