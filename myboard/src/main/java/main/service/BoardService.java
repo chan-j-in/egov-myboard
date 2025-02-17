@@ -9,4 +9,6 @@ public interface BoardService {
 	public int selectNBoardTotal(BoardVO vo) throws Exception;
 	public BoardVO selectNBoardDetail(int unq) throws Exception;
 	public int updateNBoardHits(int unq) throws Exception;
+	public int selectNBoardPass(BoardVO vo) throws Exception;
+	public int updateNBoard(BoardVO vo) throws Exception;
 }
