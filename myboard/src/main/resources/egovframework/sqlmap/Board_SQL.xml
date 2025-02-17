@@ -48,4 +48,26 @@
 				$searchType$ like '%$searchText$%'
 		</isNotNull>
 	</select>
+	
+	<select id="boardDAO.selectNBoardDetail" resultClass="boardVO">
+		select
+			title,
+			name,
+			content,
+			to_char(rdate,'yyyy-mm-dd') rdate,
+			hits
+		from
+			nboard
+		where
+			unq=$unq$
+	</select>
+	
+	<update id="boardDAO.updateNBoardHits">
+		update 
+			nboard
+		set 
+			hits=hits+1
+		where
+			unq=#unq#
+	</update>
 </sqlMap>
