@@ -27,7 +27,7 @@ function fn_submit() {
 	$("#title").val($.trim($("#title").val()));
 	
 	if( $.trim($("#pass").val()) == "") {
-		alert("암호를 입력해주세요");
+		alert("비밀번호를 입력해주세요");
 		$("#pass").focus();
 		return false;
 	}
