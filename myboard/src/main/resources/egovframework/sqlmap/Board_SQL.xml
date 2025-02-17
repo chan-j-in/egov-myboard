@@ -85,5 +85,9 @@
 				unq=#unq#
 	</update>
 	
+	<delete id="boardDAO.deleteNBoard">
+		delete from nboard
+			where unq=#unq# and pass=#pass#
+	</delete>
 
 </sqlMap>
