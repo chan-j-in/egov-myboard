@@ -81,4 +81,11 @@ public class BoardServiceImpl implements BoardService {
 		if(selectNBoardPass(vo)==0) return -1;
 		else return boardDAO.updateNBoard(vo);
 	}
+
+	@Override
+	public int deleteNBoard(BoardVO vo) throws Exception {
+		
+		if(selectNBoardPass(vo)==0) return -1;
+		else return boardDAO.deleteNBoard(vo);
+	}
 }
