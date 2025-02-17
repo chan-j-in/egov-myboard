@@ -11,4 +11,5 @@ public interface BoardService {
 	public int updateNBoardHits(int unq) throws Exception;
 	public int selectNBoardPass(BoardVO vo) throws Exception;
 	public int updateNBoard(BoardVO vo) throws Exception;
+	public int deleteNBoard(BoardVO vo) throws Exception;
 }
