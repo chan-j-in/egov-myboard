@@ -51,6 +51,7 @@
 	
 	<select id="boardDAO.selectNBoardDetail" resultClass="boardVO">
 		select
+			unq,
 			title,
 			name,
 			content,
@@ -59,15 +60,30 @@
 		from
 			nboard
 		where
-			unq=$unq$
+			unq=#unq#
 	</select>
 	
 	<update id="boardDAO.updateNBoardHits">
-		update 
-			nboard
-		set 
-			hits=hits+1
-		where
-			unq=#unq#
+		update nboard
+			set 
+				hits=hits+1
+			where
+				unq=#unq#
 	</update>
+	
+	<select id="boardDAO.selectNBoardPass" resultClass="java.lang.Integer">
+		select count(*) from nboard where unq=#unq# and pass=#pass#
+	</select>
+	
+	<update id="boardDAO.updateNBoard">
+		update nboard
+			set
+				title=#title#,
+				name=#name#,
+				content=#content#
+			where
+				unq=#unq#
+	</update>
+	
+
 </sqlMap>
