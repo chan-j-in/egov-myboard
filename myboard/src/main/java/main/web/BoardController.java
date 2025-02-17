@@ -46,7 +46,25 @@ public class BoardController {
 	@RequestMapping("/boardDetail.do")
 	public String selectNBoardDetail(int unq, ModelMap model) throws Exception {
 		
-		model.addAttribute(boardService.selectNBoardDetail(unq));
+		model.addAttribute("boardVO", boardService.selectNBoardDetail(unq));
 		return "board/boardDetail";
+	}
+	
+	@RequestMapping("/boardModifyWrite.do")
+	public String boardModifyWrite(BoardVO vo, ModelMap model) throws Exception {
+		
+		BoardVO boardVO = boardService.selectNBoardDetail(vo.getUnq());
+		model.addAttribute("boardVO", boardVO);
+		
+		System.out.println("title = " + boardVO.getTitle());
+		System.out.println("title = " + boardVO.getUnq());
+		return "board/boardModifyWrite";
+	}
+	
+	@RequestMapping("/boardModifySave.do")
+	@ResponseBody
+	public String updateNBoard(BoardVO vo) throws Exception {
+		
+		return boardService.updateNBoard(vo)+"";
 	}
 }
