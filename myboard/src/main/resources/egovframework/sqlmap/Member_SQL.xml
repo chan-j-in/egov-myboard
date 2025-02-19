@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="MemberSpace">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="memberVO" type="main.service.MemberVO"/>
+
+	<insert id="memberDAO.insertMember">
+		insert into member(
+				userid,
+				pass,
+				name,
+				birthday,
+				phone,
+				gender,
+				zipcode,
+				address)
+			values(
+				#userid#,
+				#pass#,
+				#name#,
+				#birthday#,
+				#phone#,
+				#gender#,
+				#zipcode#,
+				#address#)
+	</insert>
+	
+	<select id="memberDAO.selectMemberIdCheck" resultClass="java.lang.Integer">
+		select count(*) from member where userid=#userid#
+	</select>
+</sqlMap>
