@@ -3,6 +3,7 @@ caption {
     font-size: 12pt;
     font-weight: bold;
     text-align: center;
+    margin-top:10px;
     margin-bottom: 5px;
     color: #333;
 }
@@ -22,20 +23,24 @@ table {
 th, td {
 	border:1px solid #cccccc;
 	padding:3px;
+	line-height:2;
 }
 div {
 	width:600px;
 }
+
+input{
+	width:200px;
+}
 .input1 {
 	width:98%;
-	
 }
-
 .textarea {
 	width:98%;
 	height:70px;
 }
 .div1 {
+	width:600px;
 	text-align:center;
 	font-size:15pt;
 	margin-bottom:10px;
@@ -47,4 +52,9 @@ div {
 .page {
 	margin-top:5px;
 	text-align:center;
+}
+.div_button {
+	width:600px;
+	text-align:center;
+	margin-top:5px;
 }
