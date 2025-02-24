@@ -19,6 +19,9 @@
 
 </head>
 <body>
+
+<%@ include file="../include/topMenu.jsp" %>
+
 <div class="div1">게시글 목록</div>
 <div style="width:600px;margin-top:5px;margin-bottom:5px;text-align:right;">
 	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
