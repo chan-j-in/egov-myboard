@@ -30,4 +30,12 @@
 	<select id="memberDAO.selectMemberIdCheck" resultClass="java.lang.Integer">
 		select count(*) from member where userid=#userid#
 	</select>
+	
+	<select id="memberDAO.selectPostList" resultClass="egovMap">
+		select '['||a1||'] '||a8 addr from post where a4 like '%'||#dong#||'%'
+	</select>
+	
+	<select id="memberDAO.selectMemberCount" resultClass="java.lang.Integer">
+		select count(*) from member where userid=#userid# and pass=#pass#	
+	</select>
 </sqlMap>
