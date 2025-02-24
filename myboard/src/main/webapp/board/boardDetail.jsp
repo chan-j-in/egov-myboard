@@ -23,6 +23,8 @@
 
 <body>
 
+<%@ include file="../include/topMenu.jsp" %>
+
 <form id="frm">
 <table>
 	<caption>게시글 상세</caption>

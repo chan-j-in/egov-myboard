@@ -58,6 +58,8 @@ function fn_submit() {
 
 <body>
 
+<%@ include file="../include/topMenu.jsp" %>
+
 <form id="frm">
 <table>
 	<caption>게시글 등록</caption>

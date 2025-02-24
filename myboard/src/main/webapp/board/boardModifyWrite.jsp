@@ -61,6 +61,8 @@ function fn_submit() {
 
 <body>
 
+<%@ include file="../include/topMenu.jsp" %>
+
 <form id="frm">
 
 <input type="hidden" name="unq" value="${boardVO.unq}">
