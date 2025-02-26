@@ -29,8 +29,8 @@ $( function() {
 	});
 	
 	$("#btn_zipcode").click(function(){
-		var w = 500;
-		var h = 100;
+		var w = 400;
+		var h = 150;
 		var url="post1.do"
 		window.open(url,'zipcode','width='+w+',height='+h);
 	});
@@ -124,6 +124,9 @@ $( function() {
 
 </head>
 <body>
+
+<%@ include file="../include/topMenu.jsp" %>
+
 <form name="frm" id="frm">
 <div class="div1">회원가입</div>
 <table>
