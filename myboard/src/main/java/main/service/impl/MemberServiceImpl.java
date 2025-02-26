@@ -38,4 +38,16 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDAO.selectMemberCount(vo);
 	}
+
+	@Override
+	public MemberVO selectMemberByUserid(String userid) throws Exception {
+		
+		return memberDAO.selectMemberByUserid(userid);
+	}
+
+	@Override
+	public int updateMember(MemberVO vo) throws Exception {
+		
+		return memberDAO.updateMember(vo);
+	}
 }
