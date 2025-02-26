@@ -73,10 +73,8 @@ public class MemberController {
 
 		if(memberService.selectMemberCount(vo)==1) {
 			session.setAttribute("SessionUserId", vo.getUserid());
-			System.out.println("result : ok");
 			return "ok";
 		} else {
-			System.out.println("result : fail");
 			return "fail";
 		}
 	}
@@ -86,5 +84,54 @@ public class MemberController {
 		
 		session.removeAttribute("SessionUserId");
 		return "member/loginWrite";
+	}
+	
+	@RequestMapping("/memberPassCheck.do")
+	public String memberPassCheck(HttpSession session, ModelMap model) throws Exception {
+		
+		String userid = (String) session.getAttribute("SessionUserId");
+		
+		if(userid == null) return "redirect:/loginWrite.do";
+		
+		model.addAttribute("userid", userid);
+		return "member/passWrite";
+	}
+	
+	@RequestMapping("/memberPassCheck2.do")
+	@ResponseBody
+	public String memberPassCheck2(HttpSession session, String pass) throws Exception {
+		
+		String userid = (String) session.getAttribute("SessionUserId");
+		
+		if(userid == null) return "redirect:/loginWrite.do";
+		
+		MemberVO vo = new MemberVO();
+		vo.setUserid(userid);
+		vo.setPass(pass);
+
+		return memberService.selectMemberCount(vo) > 0 ? "1" : "-1";
+	}
+	
+	@RequestMapping("/memberModify.do")
+	public String memberModify(HttpSession session, ModelMap model) throws Exception {
+		
+		String userid = (String) session.getAttribute("SessionUserId");
+		
+		if(userid == null) return "redirect:/loginWrite.do";
+		
+		MemberVO vo = memberService.selectMemberByUserid(userid);
+		vo.setUserid(userid);
+		vo.setBirthday(vo.getBirthday().substring(0,10));
+		model.addAttribute("member", vo);
+		return "member/memberModify";
+	}
+	
+	@RequestMapping("/memberModifySave.do")
+	@ResponseBody
+	public String memberUpdate(MemberVO vo, HttpSession session) throws Exception {
+
+        if (memberService.updateMember(vo) > 0)	return "ok";
+        else return "fail";
+
 	}
 }
