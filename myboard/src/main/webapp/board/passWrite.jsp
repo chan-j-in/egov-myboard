@@ -48,19 +48,21 @@ $(function(){
 			}
 		});
 	});
-	
+	$(document).keypress(function(e) {
+        if (e.which == 13) { // Enter 키 코드
+            e.preventDefault(); // 기본 동작 방지
+            $("#delBtn").click(); // 로그인 버튼 클릭
+        }
+    });
 });
 </script>
 
 <body>
-
-<table>
-	<tr>
-		<th>비밀번호</th>
-		<td><input type="password" id="pass"></td>
-		<td><button type="submit" id="delBtn">삭제</button></td>
-	</tr>
-</table>
-
+<div>
+    <label for="pass">비밀번호</label>
+    <input type="password" id="pass">
+    <button type="submit" id="delBtn">입력</button>
+    <button type="reset" onclick="location='boardList.do'">취소</button>
+</div>
 </body>
 </html>
