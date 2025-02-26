@@ -52,6 +52,13 @@ $(function(){
 			}
 		});
 	});
+	
+	$(document).keypress(function(e) {
+        if (e.which == 13) { // Enter 키 코드
+            e.preventDefault(); // 기본 동작 방지
+            $("#btn_login").click(); // 로그인 버튼 클릭
+        }
+    });
 });
 </script>
 
