@@ -44,7 +44,7 @@ String USERID = (String) session.getAttribute("SessionUserId");
 	<%
 	} else {
 	%>
-		<th width="25%"><a href="/myboard/memberModify.do" class="a1">회원정보 수정</a></th>
+		<th width="25%"><a href="/myboard/memberPassCheck.do" class="a1">회원정보 수정</a></th>
 		<th width="25%"><a href="/myboard/logout.do" class="a1">로그아웃</a></th>
 	<%
 	}
