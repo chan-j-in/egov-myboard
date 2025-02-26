@@ -20,7 +20,7 @@
 				#userid#,
 				#pass#,
 				#name#,
-				#birthday#,
+				TO_DATE(#birthday#, 'YYYY-MM-DD'),
 				#phone#,
 				#gender#,
 				#zipcode#,
@@ -38,4 +38,34 @@
 	<select id="memberDAO.selectMemberCount" resultClass="java.lang.Integer">
 		select count(*) from member where userid=#userid# and pass=#pass#	
 	</select>
+	
+	<select id="memberDAO.selectMemberByUserid" resultClass="memberVO">
+		select
+			userid,
+			pass,
+			name,
+			birthday,
+			phone,
+			gender,
+			zipcode,
+			address
+		from
+			member
+		where
+			userid=#userid#
+	</select>
+	
+	<update id="memberDAO.updateMember">
+		update member
+			set
+				pass=#pass#,
+				name=#name#,
+				gender=#gender#,
+				birthday = TO_DATE(#birthday#, 'YYYY-MM-DD'),
+				phone=#phone#,
+				zipcode=#zipcode#,
+				address=#address#
+			where
+				userid=#userid#
+	</update>
 </sqlMap>
