@@ -72,10 +72,6 @@ function fn_submit() {
 		<td><input type="password" name="pass" id="pass"></td>
 	</tr>
 	<tr>
-		<th><label for="name">작성자</th>
-		<td><input type="text" name="name" id="name"></td>
-	</tr>
-	<tr>
 		<th><label for="content">내용</th>
 		<td><textarea type="text" name="content" id="content" class="textarea"></textarea></td>
 	</tr>
