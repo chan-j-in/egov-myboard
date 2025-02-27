@@ -3,6 +3,7 @@ package main.web;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,8 +28,17 @@ public class BoardController {
 	
 	@RequestMapping("/boardWriteSave.do")
 	@ResponseBody
-	public String insertNBoard(BoardVO vo) throws Exception {
+	public String insertNBoard(HttpSession session, BoardVO vo) throws Exception {
 		
+		String userid = (String) session.getAttribute("SessionUserId");
+		
+		String name = "";
+		if(userid == null) {
+			name = generateVisitorName();
+		} else {
+			name = userid;
+		}
+		vo.setName(name);
 	    if (boardService.insertNBoard(vo) == null) return "ok";
 	    return "fail";
 	}
@@ -83,4 +93,9 @@ public class BoardController {
 		return result+"";
 	}
 
+	private String generateVisitorName() {
+		
+		int rnd = (int) (Math.random()*900)+100;
+		return "방문자"+rnd;
+	}
 }
