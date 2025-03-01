@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import main.service.BoardService;
 import main.service.BoardVO;
+import main.service.CommentService;
 
 @Controller
-public class BoardController {
+public class BoardController extends BaseController {
 
 	@Resource(name="boardService")
 	private BoardService boardService;
+	
+	@Resource(name="commentService")
+	private CommentService commentService;
 	
 	@RequestMapping("/boardWrite.do")
 	public String boardWrite() {
@@ -39,6 +43,7 @@ public class BoardController {
 			name = userid;
 		}
 		vo.setName(name);
+		
 	    if (boardService.insertNBoard(vo) == null) return "ok";
 	    return "fail";
 	}
@@ -56,6 +61,7 @@ public class BoardController {
 	public String selectNBoardDetail(int unq, ModelMap model) throws Exception {
 		
 		model.addAttribute("boardVO", boardService.selectNBoardDetail(unq));
+		model.addAttribute("comments", commentService.selectCommentsByBoardUnq(unq));
 		return "board/boardDetail";
 	}
 	
@@ -91,11 +97,5 @@ public class BoardController {
 		int result = boardService.deleteNBoard(vo);
 		System.out.println("result : " + result);
 		return result+"";
-	}
-
-	private String generateVisitorName() {
-		
-		int rnd = (int) (Math.random()*900)+100;
-		return "방문자"+rnd;
 	}
 }
