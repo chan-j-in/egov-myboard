@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="CommentSpace">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="commentVO" type="main.service.CommentVO"/>
+	
+	<insert id="commentDAO.insertComment">
+		insert into comments (unq, nboard_unq, content, name, rdate)
+        values (comment_seq.nextval, #boardUnq#, #content#, #name#, sysdate)
+	</insert>
+	
+	<select id="commentDAO.selectCommentsByBoardUnq" resultClass="egovMap">
+        SELECT unq, nboard_unq, content, name, to_char(rdate, 'mm-dd hh24:mi') rdate
+        FROM comments
+        WHERE nboard_unq = #boardUnq#
+    </select>
+    
+	<delete id="commentDAO.deleteComment">
+        delete from comments WHERE unq = #unq#
+    </delete>
+</sqlMap>
