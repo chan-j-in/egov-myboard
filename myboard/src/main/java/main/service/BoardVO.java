@@ -1,5 +1,7 @@
 package main.service;
 
+import java.util.List;
+
 public class BoardVO {
 
 	private int unq;
@@ -16,6 +18,14 @@ public class BoardVO {
 	private String searchType;
 	private String searchText;
 	
+	private List<CommentVO> comments;
+	
+	public List<CommentVO> getComments() {
+		return comments;
+	}
+	public void setComments(List<CommentVO> comments) {
+		this.comments = comments;
+	}
 	public String getSearchType() {
 		return searchType;
 	}
