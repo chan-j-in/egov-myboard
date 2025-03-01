@@ -21,6 +21,46 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/style.css' />">
 </head>
 
+<script>
+$(function(){
+	
+	$("#commentBtn").click(function(event) {
+		
+		event.preventDefault();
+		
+		var comment_content = $.trim($("#comment_content").val());
+	    if(comment_content == "") {
+			alert("내용을 입력해주세요");
+			$("#comment_content").focus();
+			return false;
+		}
+		$("#comment_content").val($.trim($("#comment_content").val()));
+		
+		var sendData = "boardUnq=${boardVO.unq}&content="+comment_content;
+		
+	    // Ajax 요청으로 댓글 추가
+	    $.ajax({
+	    	type:"post",
+			data:sendData,
+			url:"commentWriteSave.do",
+			dataType:"text",	//리턴 타입
+
+	        success: function(data) {
+	        	if(data == "ok") {	//controller -> "ok"
+	        		alert("댓글이 등록되었습니다.");
+		            location.reload();
+				} else {
+					alert("댓글 등록에 실패했습니다.");
+				}
+	        },
+	        error: function(data) {
+	            alert("오류 발생");
+	        }
+	    });
+	});
+});
+</script>
+
 <body>
 
 <%@ include file="../include/topMenu.jsp" %>
@@ -58,6 +98,42 @@
 	</tr>
 </table>
 </form>
+
+<div style="margin-bottom: 60px;"></div>
+
+<!-- 댓글 입력 폼 -->
+<div>
+    <h3>댓글</h3>
+    
+    <table style="width: 600px; margin-top: 20px;">
+	    <thead>
+	        <tr>
+	            <th style="width: 15%;">작성자</th>
+	            <th style="width: 70%;">내용</th>
+	            <th style="width: 15%;">등록일시</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <c:if test="${empty comments}">
+	            <tr>
+	                <td colspan="3" style="text-align: center; color: #888;">댓글이 없습니다.</td>
+	            </tr>
+	        </c:if>
+	        <c:forEach var="comment" items="${comments}">
+	            <tr>
+	                <td style="width: 15%; text-align: center;">${comment.name}</td>
+	                <td style="width: 70%;">${comment.content}</td>
+	                <td style="width: 15%; text-align: center;">${comment.rdate}</td>
+	            </tr>
+	        </c:forEach>
+	    </tbody>
+	</table>
+	<br>
+	
+	<textarea id="comment_content" name="comment_content" class="textarea" placeholder="댓글을 입력하세요" style="height: 40px;"></textarea>
+	<button type="submit" id="commentBtn">등록</button>
+
+</div>
 
 </body>
 </html>
